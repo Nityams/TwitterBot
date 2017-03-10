@@ -1,4 +1,4 @@
-
+# by Nityam Shrestha
 # encoding=utf8
 import sys
 import markovify
@@ -121,7 +121,7 @@ def getPoem():
     sentence = text_model.make_short_sentence(charLength)
 
     while(sentence == None or len(sentence) < 50):
-        print "<Nityam-DeBug> none found for sentence 1"
+        print "<Nityam-DeBug> sentence 'none' found, trying again.."
         sentence = text_model.make_short_sentence(charLength)
 
     line = sentence.split(" ")
@@ -131,13 +131,12 @@ def getPoem():
     line3 = ""
     line4 = ""
 
-    #new trick
-
-    if size <= 4:  # pattern abcb
+    #Creating pattern
+    if size <= 4:  # pattern a b c b
         setSonnet = True
         patternC = line[len(line) - size]  # getting the last word of 3rd sentence
     else:
-        setSonnet = False # pattern abab
+        setSonnet = False # pattern a b a b
 
     for i in range(1, size):
         line1 += line[i] + " "
@@ -157,6 +156,7 @@ def getPoem():
     end3 = line[len(line) - size - 1]
     end4 = line[len(line) - 1]
 
+    # NLTK functions
     # need to rhym
     def rhyme(inp, level):
          entries = nltk.corpus.cmudict.entries()
@@ -196,15 +196,6 @@ def getPoem():
                     txt3 = end1
                     break
 
-            print "counter: ", counter
-            print 'enchantress3: ', enchantress.check(txt3)
-            print 'dotheyrhyme3: ', doTheyRhyme(end1, txt3)
-    # print end1, " - rhymes with: ", txt3, " where end3 is - ", end3
-            # print 'length end3: ' ,len(end3)
-            # print ' end3: ' ,end3.pop()
-            # # x = ''.join(end3)
-            # # print 'with regex', re.compile('\w+').findall(x)
-            # print 'type 3: ', type(end3)
 
     if doTheyRhyme(end2,end4)== False:
         rhymeSet = rhyme(end2, 2)
@@ -221,37 +212,14 @@ def getPoem():
                     txt4 = end2
                     break
 
-            print "counter: ", counter
-            print 'enchantress4: ', enchantress.check(txt4)
-            print 'dotheyrhyme4: ', doTheyRhyme(end2, txt4)
-
-    # print end2, " - rhymes with: ", txt4, " where end4 is - ", end4
-    # status =""
-    # status += line1
-    # status += '\n'
-    # status += line2
+    # statement to follow the rhyming pattern
     if setSonnet:
-        line3 += patternC
+        line3 += patternC     # Pattern: a b c b
     else:
-        line3 += txt3
-    # status += '\n'
-    # status+= line3
+        line3 += txt3         # Pattern: a b a b
+   
     line4 += txt4
-    # status += '\n'
-    # status += line4
-    # print status
-    # status += '\n'
-    # # status += '#MotivationMonday' #try to get it from a set of hashtags
-    # print line1
-    # print line2
-    # print line3
-    # print line4
-    # text_file.write(line1)
-    # text_file.write(line2)
-    # text_file.write(line3)
-    # text_file.write(line4)
-    # text_file.write("\n")
-    # To create the picture with Poem
+   
     createPicture(line1, line2, line3, line4)
 
 
@@ -263,8 +231,6 @@ while 1:
     getPoem()
     i+=1
     print 'status no:- ', i
-    print myStatus
-    # api.update_status(myStatus)
     api.update_with_media("tweet.png",myStatus)
     print '\n'
-    time.sleep(900)
+    time.sleep(900) # will sleep for 900 seconds

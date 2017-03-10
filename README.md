@@ -1,5 +1,5 @@
 # TwitterBot
-This is a simple and fun Twitter Bot, "Motivational Poetry" created in Python.
+This is a simple and fun Twitter Bot, "Motivational Poetry" created in Python. Art by Joseph La Ferla
 
 APIs and Libraries used:
 * Tweepy (https://github.com/tweepy/tweepy)- to connect bot to my twitter account.

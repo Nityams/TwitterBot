@@ -11,7 +11,6 @@ import enchant
 from PIL import ImageFont
 from PIL import Image
 from PIL import ImageDraw
-from keys import keys
 
 # DEBUG
 # text_file = open("Output2.txt", "w")

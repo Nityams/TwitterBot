@@ -1,7 +1,7 @@
 # TwitterBot
 This is a simple and fun Twitter Bot, "Motivational Poetry" created in Python. Art by Joseph La Ferla
 
-APIs and Libraries used:
+## APIs and Libraries used:
 * Tweepy (https://github.com/tweepy/tweepy)- to connect bot to my twitter account.
 * Markovify (https://github.com/jsvine/markovify)- to use Markov Chain to generate texts.
 * NLTK (https://github.com/nltk/nltk) - to get rhyming words for the poem.
